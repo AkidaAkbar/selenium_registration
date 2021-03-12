@@ -25,7 +25,7 @@ public class HomePageTest {
         authenticationPage.clickCreateAccountButton();
         Faker faker=new Faker();
         AccountCreationPage accountCreationPage=new AccountCreationPage();
-        accountCreationPage.userCreateAccount(faker.name().firstName(), faker.name().lastName() ,faker.lorem().characters(8, 16) ,faker.address().streetAddress(),faker.address().cityName(),"00000",faker.phoneNumber().cellPhone(),"Selenium");
+        accountCreationPage.userCreateAccount(faker.name().firstName(), faker.name().lastName() ,faker.lorem().characters(8, 16) ,faker.address().streetAddress(),faker.address().cityName(),faker.address().zipCode(),faker.phoneNumber().cellPhone(),"Selenium");
         Assert.assertTrue("Validate that the Sign out button is present.", accountCreationPage.getSignOutButton().isDisplayed());
     }
 
