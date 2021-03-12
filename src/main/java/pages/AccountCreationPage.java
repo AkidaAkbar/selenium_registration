@@ -24,6 +24,7 @@ public class AccountCreationPage {
     private static final By MOBILE_PHONE = id("phone_mobile");
     private static final By ADDRESS_ALIAS = id("alias");
     private static final By SIGN_IN_BUTTON = xpath("//button[@id='submitAccount']/span");
+    private static final By SIGN_OUT_BUTTON= xpath("//a[contains(text(),'Sign out')]");
 
 
 
@@ -64,6 +65,7 @@ public class AccountCreationPage {
         Driver.getDriver().findElement(ADDRESS).sendKeys(address);
     }
     public void enterCity(String city) {
+
         Driver.getDriver().findElement(CITY).sendKeys(city);
     }
     public void clickState() {
@@ -85,6 +87,9 @@ public class AccountCreationPage {
         Driver.getDriver().findElement(SIGN_IN_BUTTON).click();
     }
 
+    public WebElement getSignOutButton() {
+        return Driver.getDriver().findElement(SIGN_OUT_BUTTON);
+    }
 
     //combine all methods from current page
     public void userCreateAccount(String firstName, String lastName, String password, String address, String city, String zipCode, String mobile, String alias){

@@ -1,5 +1,7 @@
 package test;
 
+import com.github.javafaker.Faker;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import pages.AccountCreationPage;
@@ -21,9 +23,10 @@ public class HomePageTest {
         AuthenticationPage authenticationPage = new AuthenticationPage();
         authenticationPage.enterEmail("someone@domain.tld");
         authenticationPage.clickCreateAccountButton();
+        Faker faker=new Faker();
         AccountCreationPage accountCreationPage=new AccountCreationPage();
-        accountCreationPage.userCreateAccount("Akida","Akbar","Hello1129!","44 Valleywoods rd","Windsor","00000","4164209865","Selenium");
-
+        accountCreationPage.userCreateAccount(faker.name().firstName(), faker.name().lastName() ,faker.lorem().characters(8, 16) ,faker.address().streetAddress(),faker.address().cityName(),"00000",faker.phoneNumber().cellPhone(),"Selenium");
+        Assert.assertTrue("Validate that the Sign out button is present.", accountCreationPage.getSignOutButton().isDisplayed());
     }
 
 }
